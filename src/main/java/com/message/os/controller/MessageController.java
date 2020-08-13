@@ -1,7 +1,7 @@
 package com.message.os.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +25,7 @@ public class MessageController {
 	 * @param pageSize 每页显示数量
 	 * @param pageNo 当前页
 	 * */
-	@PostMapping(value = "/msgList")
+	@GetMapping
     public ResultVO msgList(@RequestParam("userId")String userId,@RequestParam("pageNo")Integer pageNo,
     					  @RequestParam("pageSize")Integer pageSize) {
 		return messageService.msgList(userId,pageNo,pageSize);
@@ -38,7 +38,7 @@ public class MessageController {
 	 * @param pageSize 每页显示数量
 	 * @param pageNo 当前页
 	 * */
-	@PostMapping(value = "/msgDetail")
+	@GetMapping(value = "/msgDetail")
     public ResultVO msgDetail(@RequestParam("userId")String userId,@RequestParam("friendId")String friendId,@RequestParam("pageNo")Integer pageNo,
     					  @RequestParam("pageSize")Integer pageSize) {
 		return messageService.msgDetail(userId,friendId,pageNo,pageSize);
@@ -59,7 +59,7 @@ public class MessageController {
 	 * @param userId 当前用户id
 	 * @param friendId 好友id
 	 * */
-	@PostMapping(value = "/unReadCount")
+	@GetMapping(value = "/unReadCount")
     public ResultVO unReadCount(@RequestParam("userId")String userId,@RequestParam("friendId")String friendId) {
 		return messageService.unReadCount(userId,friendId);
 	}
